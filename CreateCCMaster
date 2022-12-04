@@ -20,7 +20,7 @@ def CircuitCountyMaster(safile, housefile, senatefile, presfile, circuitcountyfi
       if col in df.columns:
         df.drop(col, axis = 1, inplace = True)
 
-    county_recode = {"OSECOLA":"OSCEOLA", "SAINT":'ST', '-':''}
+    county_recode = {"OSECOLA":"OSCEOLA", "SAINT":'ST.', '-':''}
     if 'COUNTY' in df.columns:
       df['COUNTY'] = df['COUNTY'].str.upper()
       df['COUNTY'] = df['COUNTY'].replace(county_recode, regex = True)
