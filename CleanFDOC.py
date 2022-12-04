@@ -1,4 +1,4 @@
-def CleanFDOC(filenames):
+def clean_fdoc(filenames):
   #read-in file
   file_dict = {}
   for file in filenames:

@@ -1,4 +1,4 @@
-def CircuitCountyMaster(safile, housefile, senatefile, presfile, circuitcountyfile) :
+def create_ccm(safile, housefile, senatefile, presfile, circuitcountyfile) :
   sa = pd.read_csv(safile)
   ho = pd.read_csv(housefile)
   sen = pd.read_csv(senatefile)
