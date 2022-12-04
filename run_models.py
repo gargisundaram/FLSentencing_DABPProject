@@ -14,8 +14,8 @@ from interpret import show
 from interpret.blackbox import ShapKernel
 from functools import reduce
 
-from CleanSAO import 
-from CleanFDOC import
-from CreateCCMaster import
-from CreateModelDF import
+from CleanSAO import clean_sao
+from CleanFDOC import clean_fdoc
+from CreateCCMaster import create_ccm
+from CreateModelDF import model_df
 from RunTrees import 

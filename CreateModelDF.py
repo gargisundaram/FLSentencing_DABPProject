@@ -1,9 +1,7 @@
-def model_df(datafile, obstype, crimetype):
-  
-  df = pd.read_csv(datafile)
-  ccm = pd.read_csv('circuit_county_year_master.csv')
+def model_df(df, ccm, obstype, crimetype):
 
   df.columns = df.columns.str.upper()
+  df['COUNTY'] = df.COUNTY.str.upper()
 
   if obstype == 'offense':
 
@@ -47,20 +45,27 @@ def model_df(datafile, obstype, crimetype):
         df[code] = df['ADJUDICATIONCHARGE_DESCR'].str.contains('|'.join(theft_dict[code])).astype(int)
 
 
+    df = df.iloc[np.where(df['TERM_YEARS'] < 1000)]
+    df.reset_index(inplace = True, drop = True)
     df_dropcols = ['DCNUMBER','DATEADJUDICATED', 'ADJUDICATIONCHARGE_DESCR', 'RELEASEDATEFLAG_DESCR']
     df_dummycols = ['RACE', 'SEX']
     
   if obstype == 'action':
     df_dropcols = ['CASE_ID','CHARGE_ID','CASE_CREATED_DATE']
     df_dummycols = ['CHARGE_DEGREE','CHARGE_LEVEL', 'RACE', 'SEX', 'OFFENSE']
+    badcodes = ["Administratively Dismissed", "Transferred to Another Court", "Consolidated", "Pre-Trial Diversion"]
+    df = df.drop(np.where(df['FINAL_ACTION_DESC'].str.contains('|'.join(badcodes)))[0], axis = 0)
+
+    charge_code = {'Filed Pending Court':1,'Dropped or Abandoned':0,'No Action':0,'Nolle Prossed':0 }
+    df = df.replace({"FINAL_ACTION_DESC": charge_code})
       
-  df['COUNTY'] = df['COUNTY'].str.upper()
   df = pd.get_dummies(df, prefix=df_dummycols, columns=df_dummycols)
   df = df.drop(df_dropcols, axis = 1)
 
   final = pd.merge(df, ccm, how='left', on=['COUNTY','YEAR'])
   final_dummycols = ['COUNTY', 'YEAR', 'CIRCUIT', 'SA_NAME', 'POLITICAL_PARTY']
   final = pd.get_dummies(final, prefix=final_dummycols, columns=final_dummycols)
+  final.dropna(inplace = True)
 
   final_filename = crimetype+'_'+obstype+'modeling_data.csv'
   final.to_csv(final_filename, index = False)
