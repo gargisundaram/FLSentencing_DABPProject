@@ -14,12 +14,12 @@ def cart_model(df, target, model, seed):
   #get best params
   tree = model(random_state = seed)
   gs = GridSearchCV(model(), {'max_depth':[3,40], 'min_samples_split':[10,80]})
-  grid_result = gs.fit(x_train, y_train)
+  grid_result = gs.fit(x_train, y_train.values.ravel())
   best_params = grid_result.best_params_
   
   #run model
   tree = model(max_depth = best_params.get('max_depth'), max_features = best_params.get('max_features'), random_state=seed)
-  t = tree.fit(x_train, y_train)
+  t = tree.fit(x_train, y_train.values.ravel())
   y_pred = t.predict(x_test)
   tree_train = tree.score(x_train, y_train)
   tree_test = tree.score(x_test, y_test)
