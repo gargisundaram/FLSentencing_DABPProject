@@ -75,6 +75,9 @@ def CleanFDOC(filenames):
 
   drug_df = df.iloc[drug_rows].reset_index(drop = True)
   theft_df = df.iloc[theft_rows].reset_index(drop = True)
+  
+  drug_df.to_csv('drug_offenses_data_clean.csv', index = False)  
+  theft_df.to_csv('theft_offenses_data_clean.csv', index = False)
 
   return drug_df, theft_df
   
