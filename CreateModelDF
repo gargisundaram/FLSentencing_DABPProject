@@ -65,4 +65,4 @@ def model_df(datafile, obstype, crimetype):
   final_filename = crimetype+'_'+obstype+'modeling_data.csv'
   final.to_csv(final_filename, index = False)
 
-  return df
+  return final
