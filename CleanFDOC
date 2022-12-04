@@ -29,7 +29,7 @@ def CleanFDOC(filenames):
   df = df[(df.Year > 2011) & (df.Year < 2022)].reset_index(drop = True)
 
   #create charge_count and priors features
-  vars = ['DCNumber', 'DateAdjudicated', 'adjudicationcharge_descr', 'County', 'prisonterm']
+  vars = ['DCNumber', 'DateAdjudicated', 'adjudicationcharge_descr', 'County', 'prisonterm', 'Year']
   df = df.groupby(vars, as_index=False).agg(charge_count = ('Sequence', 'count')).sort_values(['DCNumber', 'DateAdjudicated', 'adjudicationcharge_descr', 'prisonterm'])
   df = df.drop_duplicates(['DCNumber', 'DateAdjudicated', 'adjudicationcharge_descr'], keep = 'first')
   priors = df[['DCNumber', 'DateAdjudicated']].sort_values('DateAdjudicated').drop_duplicates()
@@ -80,5 +80,3 @@ def CleanFDOC(filenames):
   theft_df.to_csv('theft_offenses_data_clean.csv', index = False)
 
   return drug_df, theft_df
-  
-  
