@@ -7,13 +7,13 @@ def model_df(df, ccm, obstype, crimetype):
 
     if crimetype == 'drug':
 
-      drug_dict = {'POSSESION': ['POS'],
+      drug_dict = {'POSSESSION': ['POS'],
                    'MARIJUANA':['MARIJUANA', 'CANN', 'SYN CAN'], 
                    'COCAINE':['COCAINE', 'COC'], 
-                   'PRESCRIPTION': ['HYDROC', 'OXY', 'OP.ILL.PAIN MGT'],
-                   'ILL_OPIOID' : ['FENTANYL', 'HEROIN','HER\.', 'HER,', 'HER/', 'OPIUM'],
+                   'PRESCRIPTION_OPIOIDS': ['HYDROC', 'OXY', 'OP.ILL.PAIN MGT'],
+                   'NON-PRESCRIPTION_OPIOIDS' : ['FENTANYL', 'HEROIN','HER\.', 'HER,', 'HER/', 'OPIUM'],
                    'METH' : ['METH', 'AMPH'],
-                   'HALL' : ['HALLUCINOGEN', 'LSD', 'PCP'],
+                   'HALLUCINOGENS' : ['HALLUCINOGEN', 'LSD', 'PCP'],
                    'DATE_RAPE' : ['ROHYPNL', 'GBL', 'GHB'],
                    'BARBITURATES': ['BARB'],
                    'BATHSALTS':['BATHSALT'],
@@ -26,7 +26,7 @@ def model_df(df, ccm, obstype, crimetype):
 
       theft_dict = {
           'BURGLARY' : ['BURG', 'BURGLARY'],
-          'GRAND_THEFT' : ['GR.', 'GRAND'],
+          'GRAND THEFT' : ['GR.', 'GRAND'],
           'HOME_INVASION' : ['HOME'],
           'PETIT_THEFT' : ['PETIT'],
           'RETAIL_THEFT' : ['RETAIL'],
@@ -34,11 +34,11 @@ def model_df(df, ccm, obstype, crimetype):
           'PROPERTY_THEFT' : ['PROP'],
           'SNATCH' : ['SNATCH'],
           'ELDER_ABUSE' : ['65YO'],
-          'GOVT_THEFT' : ['STATE'],
+          'GOVERNMENT_THEFT' : ['STATE'],
           'SUBSTANCE_THEFT' : ['SUBSTANCE'],
-          'DEADLYWEAPON' : ['DLY.WPN', 'DEADLY WPN', 'DW'],
-          'NOWEAPON' : ['NO GUN/DDLY.WPN', 'NO WEAPON'],
-          'NONDEADLYWEAPON' : ['OR WEAPO', 'OTHER WPN', 'WPN-NOT DEADLY']
+          'DEADLY_WEAPON' : ['DLY.WPN', 'DEADLY WPN', 'DW'],
+          'NO_WEAPON' : ['NO GUN/DDLY.WPN', 'NO WEAPON'],
+          'NON-DEADLY_WEAPON' : ['OR WEAPO', 'OTHER WPN', 'WPN-NOT DEADLY']
       }
 
       for code in theft_dict.keys():
