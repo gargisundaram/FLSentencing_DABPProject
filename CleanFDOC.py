@@ -1,8 +1,4 @@
 def clean_fdoc(filenames):
-
-  import pandas as pd
-  import numpy as np
-
   #read-in file
   file_dict = {}
   for file in filenames:
