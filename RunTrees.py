@@ -60,7 +60,7 @@ def get_tree(df, target, model, paramdict, importanceplotfile, shapplotfile, see
   #plt.figure(figsize=(25,15))
   #plot_tree(tree, feature_names = x.columns, filled = True)
 
-  explainer = shap.TreeExplainer(t)
+  explainer = shap.TreeExplainer(t, model_output = out)
   shap_values = explainer.shap_values(x_test)
   shap.summary_plot(shap_values, x_test)
   plt.savefig(shapplotfile)
