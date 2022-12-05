@@ -1,8 +1,9 @@
-import pandas as pd
-import numpy as np
-from functools import reduce
-
 def create_ccm(safile, housefile, senatefile, presfile, circuitcountyfile) :
+
+  import pandas as pd
+  import numpy as np
+  from functools import reduce
+
   sa = pd.read_csv(safile)
   ho = pd.read_csv(housefile)
   sen = pd.read_csv(senatefile)

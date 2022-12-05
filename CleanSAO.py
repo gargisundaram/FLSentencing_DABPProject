@@ -1,7 +1,6 @@
-import pandas as pd
-import numpy as np
-
 def clean_sao(filename):
+    import pandas as pd
+    import numpy as np
     
     dropcols = ['VICTIM_ID', "AGENCY_NAME", 'STATE', 'UCN_COUNTY_CODE',
             'CORRELATION_ID', 'UNIQUE_CORRELATION_ID', 'OWNER_ORI', 'DEFENDANT_ID', 'FINAL_ACTION_PROSECUTOR', 'DEF_STATUTE_CHAPTER_GROUPING',
