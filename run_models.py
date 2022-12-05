@@ -13,9 +13,13 @@ from interpret.provider import InlineProvider
 from interpret import show
 from interpret.blackbox import ShapKernel
 from functools import reduce
+from interpret import set_visualize_provider, show
+from interpret.provider import InlineProvider
+from interpret.blackbox import ShapKernel
+
 
 from CleanSAO import clean_sao
 from CleanFDOC import clean_fdoc
 from CreateCCMaster import create_ccm
 from CreateModelDF import model_df
-from RunTrees import 
+from RunTrees import get_tree
