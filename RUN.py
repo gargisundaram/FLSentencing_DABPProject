@@ -76,5 +76,6 @@ bag = {'max_depth':[8, 12],
 drug_sa_tree = get_tree(drug_sa_df, target = 'FINAL_ACTION_DESC', paramdict = bag, model = XGBClassifier, seed =10)
 theft_sa_tree = get_tree(theft_sa_df, target = 'FINAL_ACTION_DESC', paramdict = bag, model = XGBClassifier,seed=10)
 
+# XGB Regressors
 drug_off_tree = get_tree(drug_off_df, target = 'TERM_YEARS', paramdict = bag, model = XGBRegressor, seed=42)
 theft_off_tree = get_tree(theft_off_df, 'TERM_YEARS', paramdict = bag, model =XGBRegressor, seed = 42)
