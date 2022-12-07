@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def model_df(df, ccm, obstype, crimetype):
 
   df.columns = df.columns.str.upper()

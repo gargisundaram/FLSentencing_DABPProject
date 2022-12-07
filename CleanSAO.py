@@ -1,5 +1,5 @@
 import numpy as np
-import pandas
+import pandas as pd
 
 def clean_sao(filename):
     dropcols = ['VICTIM_ID', "AGENCY_NAME", 'STATE', 'UCN_COUNTY_CODE',
@@ -11,7 +11,7 @@ def clean_sao(filename):
     theft_keywords = ['Robbery', 'Theft', 'Burglary', 'Stolen', 'Shoplift', 'Larceny']
     timecols = ['CASE_CREATED_DATE', 'FINAL_DECISION']
     
-    df = pandas.read_csv(filename)
+    df = pd.read_csv(filename)
     
     df.drop(dropcols, axis = 1, inplace = True)
     

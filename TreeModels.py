@@ -1,3 +1,14 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, r2_score, mean_squared_error
+from xgboost import XGBRegressor, XGBClassifier
+import shap
+
 #takes dataframe directly
 #target is the name of the y column for the dataset 
 #model is the type of sklearn model being run (ex: DecisionTreeClassifier)

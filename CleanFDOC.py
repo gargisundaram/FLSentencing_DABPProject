@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def clean_fdoc(filenames):
   #read-in file
   file_dict = {}
