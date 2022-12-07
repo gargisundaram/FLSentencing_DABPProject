@@ -16,7 +16,7 @@ from CleanSAO import clean_sao
 from CleanFDOC import clean_fdoc
 from CreateCCMaster import create_ccm
 from CreateModelDF import model_df
-from RunTrees import get_tree
+from TreeModels import get_tree
 
 #Clean charges(prosecutor specific actions) datasets (drug, theft)
 drug_sa_clean, theft_sa_clean = clean_sao('CjdtSAOCase_00000.csv')
