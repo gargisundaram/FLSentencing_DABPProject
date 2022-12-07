@@ -3,7 +3,7 @@
 #model is the type of sklearn model being run (ex: DecisionTreeClassifier)
 #should change the random state but it's currently set to a default
 
-def get_tree(df, target, model, paramdict, importanceplotfile, shapplotfile, seed = 10):
+def get_tree(df, target, model, paramdict, seed = 10):
   #split into x and y variables
   x = df.drop([target], axis = 1)
   y = df[[target]]
@@ -31,16 +31,15 @@ def get_tree(df, target, model, paramdict, importanceplotfile, shapplotfile, see
     metric = {'conf_mat':confusion_matrix(y_test, y_pred_test),
               'class_report':classification_report(y_test, y_pred_test),
               "accuracy" : accuracy_score(y_test, y_pred_test)}
-    print(metric['conf_mat'],
-          metric['class_report'],
-          metric['accuracy'])
-    out = 'predict_proba'
+    print(
+          "Confusion matrix:\n", metric['conf_mat'],
+          "Classification Report:\n", metric['class_report'],
+          "Accuracy:", metric['accuracy'])
 
   elif (model == DecisionTreeRegressor) or (model == RandomForestRegressor) or (model == XGBRegressor):
     metric = {'train_rmse' : np.sqrt(mean_squared_error(y_train, y_pred_train)), 
               'test_rmse' : np.sqrt(mean_squared_error(y_test, y_pred_test))}
     print('train RMSE:', metric['train_rmse'], '\ntest RMSE:', metric['test_rmse'])
-    out = "raw"
 
   #feature importance
   importance = pd.DataFrame(tree.feature_importances_, columns = ["Importance"])
@@ -48,22 +47,20 @@ def get_tree(df, target, model, paramdict, importanceplotfile, shapplotfile, see
   importance = importance[importance['Importance'] > 0].sort_values(by = 'Importance', ascending = False)
 
   # Print table of feature importances
-  #display(importance)
+  print("Feature Importance Table")
+  display(importance)
 
   # Histogram of feature importances
   plt.bar(importance['Features'], importance['Importance'])
   plt.xticks(rotation = -90)
+  print("Histogram of Feature Importance")
   plt.show()
-  plt.savefig(importanceplotfile)
 
-  #Tree plot
-  #plt.figure(figsize=(25,15))
-  #plot_tree(tree, feature_names = x.columns, filled = True)
-
-  explainer = shap.TreeExplainer(t, model_output = out)
+  #Beeswarm plots with shap values
+  explainer = shap.TreeExplainer(t)
   shap_values = explainer.shap_values(x_test)
+  print("Feature Beeswarm Plot")
   shap.summary_plot(shap_values, x_test)
-  plt.savefig(shapplotfile)
-  
+
   return t, metric, importance, shap_values
   
