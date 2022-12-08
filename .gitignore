@@ -1,0 +1,16 @@
+__pycache__/CleanFDOC.cpython-39.pyc
+__pycache__/CreateCCMaster.cpython-39.pyc
+__pycache__/CreateModelDF.cpython-39.pyc
+__pycache__/TreeModels.cpython-39.pyc
+data/Active_Offenses_CPS.csv
+data/Active_Offenses_PRPR.csv
+data/Active_Root.csv
+data/circuit_county_crosswalk.csv
+data/CjdtSAOCase_00000.csv
+data/clean_house.csv
+data/clean_pres.csv
+data/clean_senate.csv
+data/Release_Offenses_CPS.csv
+data/Release_Offenses_PRPR.csv
+data/Release_Root.csv
+data/SA_Political_Leanings.csv
