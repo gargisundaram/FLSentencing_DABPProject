@@ -15,3 +15,12 @@ data/Release_Offenses_PRPR.csv
 data/Release_Root.csv
 data/SA_Political_Leanings.csv
 __pycache__/CleanSAO.cpython-39.pyc
+data/drug_specific_actions_clean.csv
+data/theft_specific_actions_clean.csv
+data/drug_offenses_data_clean.csv
+data/theft_offenses_data_clean.csv
+data/circuit_county_year_master.csv
+data/drug_actionmodeling_data.csv
+data/drug_offensemodeling_data.csv
+data/theft_actionmodeling_data.csv
+data/theft_offensemodeling_data.csv
