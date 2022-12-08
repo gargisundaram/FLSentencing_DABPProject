@@ -29,8 +29,8 @@ def clean_sao(filename):
                          'DEFENDANT_SEX_TYPE_DESC':'SEX',
                          'OFFENSE_FCIC_TYPE_DESC':'OFFENSE'}, inplace = True)
 
-    drugsubset = np.where(df.OFFENSE_FCIC_TYPE_DESC.str.contains('|'.join(drug_keywords)))[0].tolist()
-    theftsubset = np.where(df.OFFENSE_FCIC_TYPE_DESC.str.contains('|'.join(theft_keywords)))[0].tolist()
+    drugsubset = np.where(df.OFFENSE.str.contains('|'.join(drug_keywords)))[0].tolist()
+    theftsubset = np.where(df.OFFENSE.str.contains('|'.join(theft_keywords)))[0].tolist()
 
     drug_df = df.iloc[drugsubset].reset_index(drop = True)
     theft_df = df.iloc[theftsubset].reset_index(drop = True)
