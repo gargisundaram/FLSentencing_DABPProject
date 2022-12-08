@@ -24,7 +24,10 @@ def clean_sao(filename):
     df.drop(['FINAL_DECISION'], axis=1, inplace = True)
     df = df[(df.YEAR > 2011) & (df.YEAR<2022)]
 
-    df.rename(columns = {'COUNTY_DESCRIPTION' : "COUNTY"}, inplace = True)
+    df.rename(columns = {'COUNTY_DESCRIPTION' : "COUNTY",
+                         'DEFENDANT_RACE_TYPE_DESC':'RACE',
+                         'DEFENDANT_SEX_TYPE_DESC':'SEX',
+                         'OFFENSE_FCIC_TYPE_DESC':'OFFENSE'}, inplace = True)
 
     drugsubset = np.where(df.OFFENSE_FCIC_TYPE_DESC.str.contains('|'.join(drug_keywords)))[0].tolist()
     theftsubset = np.where(df.OFFENSE_FCIC_TYPE_DESC.str.contains('|'.join(theft_keywords)))[0].tolist()
