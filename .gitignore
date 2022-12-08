@@ -14,3 +14,4 @@ data/Release_Offenses_CPS.csv
 data/Release_Offenses_PRPR.csv
 data/Release_Root.csv
 data/SA_Political_Leanings.csv
+__pycache__/CleanSAO.cpython-39.pyc
