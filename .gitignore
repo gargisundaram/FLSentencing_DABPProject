@@ -24,3 +24,13 @@ data/drug_actionmodeling_data.csv
 data/drug_offensemodeling_data.csv
 data/theft_actionmodeling_data.csv
 data/theft_offensemodeling_data.csv
+circuit_county_year_master.csv
+drug_actionmodeling_data.csv
+drug_offensemodeling_data.csv
+drug_offenses_data_clean.csv
+drug_specific_actions_clean.csv
+theft_actionmodeling_data.csv
+theft_offensemodeling_data.csv
+theft_offenses_data_clean.csv
+theft_specific_actions_clean.csv
+__pycache__/CleanFDOC.cpython-38.pyc
