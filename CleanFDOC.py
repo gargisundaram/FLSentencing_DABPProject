@@ -40,7 +40,7 @@ def clean_fdoc(filenames):
   df = df.merge(priors, how = 'left', on = ['DCNumber', 'DateAdjudicated'])
 
   #concat demographic files  
-  demo_keys = ['Active_Root', 'Release_Root']
+  demo_keys = ['Active_Root_sample', 'Release_Root_sample']
   demo_dfs = [file_dict[key] for key in demo_keys]
   demo = pd.concat(demo_dfs)
 
