@@ -12,7 +12,7 @@ def clean_fdoc(filenames):
     file_dict[file_title] = df
 
   #concat offense files  
-  offense_keys = ['Active_Offenses_PRPR', 'Active_Offenses_CPS', 'Release_Offenses_PRPR', 'Release_Offenses_CPS']
+  offense_keys = ['Active_Offenses_PRPR_sample', 'Active_Offenses_CPS_sample', 'Release_Offenses_PRPR_sample', 'Release_Offenses_CPS_sample']
   offense_dfs = [file_dict[key] for key in offense_keys]
   df = pd.concat(offense_dfs)
 
