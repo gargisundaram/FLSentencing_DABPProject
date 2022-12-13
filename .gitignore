@@ -24,3 +24,6 @@ data/drug_actionmodeling_data.csv
 data/drug_offensemodeling_data.csv
 data/theft_actionmodeling_data.csv
 data/theft_offensemodeling_data.csv
+theft_specific_actions_clean.csv
+CjdtSAOCase_00000.csv
+drug_specific_actions_clean.csv
