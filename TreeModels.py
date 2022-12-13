@@ -14,7 +14,10 @@ import shap
 #model is the type of sklearn model being run (ex: DecisionTreeClassifier)
 #should change the random state but it's currently set to a default
 
-def get_tree(df, target, model, paramdict, seed = 10):
+def get_tree(df, target, model, paramdict, seed = 10, nsample = None):
+  if nsample.isna() == False:
+    df = df.sample(n = nsample)
+  
   #split into x and y variables
   x = df.drop([target], axis = 1)
   y = df[[target]]
