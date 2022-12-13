@@ -14,8 +14,8 @@ import shap
 #model is the type of sklearn model being run (ex: DecisionTreeClassifier)
 #should change the random state but it's currently set to a default
 
-def get_tree(df, target, model, paramdict, seed = 10, nsample = None):
-  if nsample.isna() == False:
+def get_tree(df, target, model, paramdict, seed = 10, nsample = 0):
+  if nsample != 0:
     df = df.sample(n = nsample)
   
   #split into x and y variables
@@ -28,13 +28,19 @@ def get_tree(df, target, model, paramdict, seed = 10, nsample = None):
   y_test = y_test.values.ravel()
 
   #get best params
-  tree = model(random_state = seed)
-  gs = GridSearchCV(model(), paramdict)
+  if model == XGBRegressor:
+    tree = model(objective = 'reg:squarederror', random_state=seed)
+  else:
+    tree = model(random_state=seed)
+  gs = GridSearchCV(tree, paramdict)
   grid_result = gs.fit(x_train, y_train)
   best_params = grid_result.best_params_
   
   #run model
-  tree = model(**best_params, random_state=seed)
+  if model == XGBRegressor:
+    tree = model(**best_params, objective = 'reg:squarederror', random_state=seed)
+  else:
+    tree = model(**best_params, random_state=seed)
   t = tree.fit(x_train, y_train)
   y_pred_train = t.predict(x_train)
   y_pred_test = t.predict(x_test)

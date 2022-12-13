@@ -12,7 +12,7 @@ def clean_fdoc(filenames):
     file_dict[file_title] = df
 
   #concat offense files  
-  offense_keys = ['Active_Offenses_PRPR_sample', 'Active_Offenses_CPS_sample', 'Release_Offenses_PRPR_sample', 'Release_Offenses_CPS_sample']
+  offense_keys = ['Active_Offenses_PRPR', 'Active_Offenses_CPS', 'Release_Offenses_PRPR', 'Release_Offenses_CPS']
   offense_dfs = [file_dict[key] for key in offense_keys]
   df = pd.concat(offense_dfs)
 
@@ -40,7 +40,7 @@ def clean_fdoc(filenames):
   df = df.merge(priors, how = 'left', on = ['DCNumber', 'DateAdjudicated'])
 
   #concat demographic files  
-  demo_keys = ['Active_Root_sample', 'Release_Root_sample']
+  demo_keys = ['Active_Root', 'Release_Root']
   demo_dfs = [file_dict[key] for key in demo_keys]
   demo = pd.concat(demo_dfs)
 
